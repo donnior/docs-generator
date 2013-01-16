@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Document - </title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    q { quotes: "“" "”" "‘" "’"; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#简介">简介</a><ul>
+<li><a href="#什么是mvc">什么是MVC?</a></li>
+<li><a href="#what-is-backbone.js">What is Backbone.js?</a></li>
+<li><a href="#when-do-i-need-a-javascript-mvc-framework">When Do I Need A JavaScript MVC Framework?</a></li>
+<li><a href="#why-consider-backbone.js">Why Consider Backbone.js?</a></li>
+<li><a href="#setting-expectations">Setting Expectations</a></li>
+</ul></li>
+<li><a href="#fundamentals">Fundamentals</a><ul>
+<li><a href="#mvc-backbone.js">MVC &amp; Backbone.js</a></li>
+<li><a href="#mvc">MVC</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="前言"><a href="#TOC">前言</a></h2>
+<figure>
+<img src="img/logo.jpg"><figcaption></figcaption>
+</figure>
+<p>Welcome to my (in-progress) book about the <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> library for structuring JavaScript applications. It’s released under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">license</a> meaning you can both grab a copy of the book for free or help to further <a href="https://github.com/addyosmani/backbone-fundamentals/">improve</a> it.</p>
+<p>I’m very pleased to announce that this book will be out in physical form (once complete) via <a href="http://oreilly.com">O’Reilly Media</a>. Readers will have the option of purchasing the latest version in either print or a number of digital formats then or can grab a recent version from this repository.</p>
+<p>Corrections to existing material are always welcome and I hope that together we can provide the community with an up-to-date resource that is of help. My extended thanks go out to <a href="https://github.com/jashkenas">Jeremy Ashkenas</a> for creating Backbone.js and <a href="https://github.com/addyosmani/backbone-fundamentals/contributors">these</a> members of the community for their assistance tweaking this project.</p>
+<p>I hope you find this book helpful!</p>
+<h1 id="简介"><a href="#TOC">简介</a></h1>
+<p>Frank Lloyd Wright once said <q>You can’t make an architect. You can however open the doors and windows toward the light as you see it</q>. In this book, I hope to shed some light on how to improve the structure of your web applications, opening doors to what will hopefully be more maintainable, readable applications in your future.</p>
+<p>The goal of all architecture is to build something well - in our case, to craft code that is enduring and delights both ourselves and the developers who will maintain our code long after we are gone. We all want our architecture to be simple, yet beautiful.</p>
+<p>When writing a web application from scratch it can be easy to feel like we can get by simply relying on a DOM manipulation library (such as jQuery) and a handful of plugins. The challenge with this approach is that it doesn’t take long to get lost in a nested pile of callbacks and DOM elements without any real structure in place.</p>
+<p>In short, you can end up with a pile of spaghetti code - code that is disorganized and difficult to follow. This type of code has no simple panacea, short of a rewrite that may end up costing both time and money to alleviate. Fortunately, there are ways to avoid this problem.</p>
+<p>Modern JavaScript frameworks and libraries can assist with bringing structure and organization to our projects, improving how maintainable they are from the start. They build on the trials and tribulations of developers who have had to work around similar callback chaos as you have, providing solutions to many common problems by default.</p>
+<p>With that, in &quot;Developing Backbone.js Applications:, I and a number of other experienced authors will take you through a journey of learning how to improve your application structure using one such library - Backbone.js.</p>
+<h3 id="什么是mvc"><a href="#TOC">什么是MVC?</a></h3>
+<p>The modern JavaScript frameworks I mentioned a moment ago provide developers an easy path to organizing their code using variations of a pattern known as MVC (Model-View-Controller). MVC separates the concerns in an application down into three parts:</p>
+<ul>
+<li>Models represent the domain-specific knowledge and data in an application. Think of this as being a <q>type</q> of data you can model — like a User, Photo or Todo note. Models should notify anyone observing them about their current state (e.g Views).</li>
+<li>Views are typically considered the User-interface in an application (e.g your markup and templates), but don’t have to be. They should know about the existence of Models in order to observe them, but don’t directly communicate with them.</li>
+<li>Controllers handle the input (e.g clicks, user actions) in an application and Views can be considered as handling the output. When a Controller updates the state of a model (such as editing Todo note content), it doesn’t directly tell the View. This is what the observing nature of the View and Model relationship is for.</li>
+</ul>
+<p>JavaScript <q>MVC</q> frameworks that can help us structure our code don’t always strictly follow the above pattern. Some solutions will include the responsibility of the Controller in the View (e.g Backbone.js) whilst others add their own opinionated components into the mix as they feel this is more effective.</p>
+<p>For this reason we refer to such frameworks as following the MV* pattern, that is, you’re likely to have a View and a Model, but more likely to have something else also included.</p>
+<h3 id="what-is-backbone.js"><a href="#TOC">What is Backbone.js?</a></h3>
+<figure>
+<img src="img/todoapp.png"><figcaption></figcaption>
+</figure>
+<p>Backbone.js is a lightweight JavaScript library for adding structure to your client-side code. It makes it easy to manage and decouple concerns in your application, leaving you with code that is more maintainable in the long term.</p>
+<p>Developers commonly use libraries like Backbone.js to create single-page applications or SPAs. To put it simply, these apps enable the browser to react to changes in data on the client-side without the need to completely load up all your markup from the server, meaning no complete page-refreshes are necessary.</p>
+<p>Backbone.js is a mature, popular library at the time of writing and has both a large development community online as well as a wealth of plugins and extensions available to build upon it. It has been used to create non-trivial applications by companies such as Disqus, Walmart, SoundCloud and Foursquare.</p>
+<h3 id="when-do-i-need-a-javascript-mvc-framework"><a href="#TOC">When Do I Need A JavaScript MVC Framework?</a></h3>
+<p>When building a single-page application using JavaScript, whether it involves a complex user interface or is simply trying to reduce the number of HTTP requests required for new Views, you will likely find yourself inventing many of the pieces that make up an MV* framework, such as Backbone.js.</p>
+<p>At the outset, it isn’t terribly difficult to write an application framework that offers some opinionated way to avoid spaghetti code, however to say that it is equally as trivial to write something of the standard of Backbone would be a grossly incorrect assumption.</p>
+<p>There’s a lot more that goes into structuring an application than tying together a DOM manipulation library, templating and routing. Mature MV* frameworks typically not only include many of the pieces you would find yourself writing, but also include solutions to problems you’ll find yourself running into later on down the road. This is a time-saver that you shouldn’t underestimate the value of.</p>
+<p>So, where will you likely need an MV* framework and where won’t you?</p>
+<p>If you’re writing an application that will likely only be communicating with an API or back-end data service, where much of the heavy lifting for viewing or manipulating that data will be occurring in the browser, you may find a JavaScript MV* framework useful. Good examples of applications that fall into this category are GMail and Google Docs.</p>
+<p>These applications typically download a single payload containing all the scripts, stylesheets and markup users need for common tasks and then perform a lot of additional behavior in the background. It’s trivial to switch between reading an email or document to writing one and you don’t need to ask the application to render the whole page again at all.</p>
+<p>If, however, you’re building an application that still relies on the server for most of the heavy-lifting of Views/pages and you’re just using a little JavaScript or jQuery to make things a little more interactive, an MV framework may be overkill. There certainly are complex Web applications where the partial rendering of views can* be coupled with a single-page application effectively, but for everything else, you may find yourself better sticking to a simpler setup.</p>
+<p>Maturity in software (framework) development isn’t simply about how long a framework has been around. It’s about how solid the framework is and more importantly how well it’s evolved to fill its role. Has it become more effective at solving common problems? Does it continue to improve as developers build larger and more complex applications with it?</p>
+<h3 id="why-consider-backbone.js"><a href="#TOC">Why Consider Backbone.js?</a></h3>
+<p>Does the following describe you?:</p>
+<p>&quot;I want something flexible which offers a minimalist solution to separating concerns in my application. It should support a persistence layer and RESTful sync, models, views (with controllers), event-driven communication, templating and routing. It should be imperative, allowing one to update the View when a model changes. I’d like some decisions about the architecture left up to me. Ideally, many large companies have used the solution to build non-trivial applications.</p>
+<p>As I may be building something complex, I’d like there to be an active extension community around the framework that have already tried addressing larger problems (Marionette, Chaplin, Aura, Thorax). Ideally, there are also scaffolding tools (grunt-bbb, brunch) available for the solution.&quot;</p>
+<p>If so, continue reading.</p>
+<p>Backbone’s main benefits, regardless of your target platform or device, include helping:</p>
+<ul>
+<li>Organize the structure to your application</li>
+<li>Simplify server-side persistence</li>
+<li>Decouple the DOM from your page’s data</li>
+<li>Model data, views and routers in a succinct manner</li>
+<li>Provide DOM, model and collection synchronization</li>
+</ul>
+<h3 id="setting-expectations"><a href="#TOC">Setting Expectations</a></h3>
+<p>The goal of this book is to create an authoritative and centralized repository of information that can help those developing real-world apps with Backbone. If you come across a section or topic which you think could be improved or expanded on, please feel free to submit a pull-request. It won’t take long and you’ll be helping other developers avoid problems you’ve run into before.</p>
+<p>Topics will include MVC theory and how to build applications using Backbone’s models, views, collections and routers. I’ll also be taking you through advanced topics like modular development with Backbone.js and AMD (via RequireJS), solutions to common problems like nested views, how to solve the routing problems with Backbone and jQuery Mobile and a lot more.</p>
+<h1 id="fundamentals"><a href="#TOC">Fundamentals</a></h1>
+<p>In this first chapter, we’re going to explore how frameworks like Backbone.js fit in the world of JavaScript application architecture. Classically, developers creating desktop and server-class applications have had a wealth of design patterns available for them to lean on, but it’s only been in the past few years that such patterns have come to client-side development.</p>
+<p>Before exploring any JavaScript frameworks that assist in structuring applications, it can be useful to gain a basic understanding of architectural design patterns.</p>
+<h3 id="mvc-backbone.js"><a href="#TOC">MVC &amp; Backbone.js</a></h3>
+<p>Design patterns are proven solutions to common development problems and can help guide us in adding more organization and structure to our applications. Patterns are also of great use as they reflect a set of practices which build upon the collective experience of skilled developers who have repeatedly solved similar problems.</p>
+<p>In this section, we’re going to explore the MVC (Model-View-Controller) pattern and how it applies to Backbone.js.</p>
+<h2 id="mvc"><a href="#TOC">MVC</a></h2>
+<p>MVC is an architectural design pattern that encourages improved application organization through a separation of concerns. It enforces the isolation of business data (Models) from user interfaces (Views), with a third component (Controllers) traditionally managing logic, user-input and the coordination of models and views. The pattern was originally designed by <a href="http://en.wikipedia.org/wiki/Trygve_Reenskaug">Trygve Reenskaug</a> while working on Smalltalk-80 (1979), where it was initially called Model-View-Controller-Editor. MVC was described in depth in <a href="http://www.amazon.co.uk/Design-patterns-elements-reusable-object-oriented/dp/0201633612"><q>Design Patterns: Elements of Reusable Object-Oriented Software</q></a> (The <q>GoF</q> or <q>Gang of Four</q> book) in 1994, which played a role in popularizing its use.</p>
+<hr>
+<p>Where relevant, copyright Addy Osmani, 2012-2013.</p>
+</body>
+</html>
