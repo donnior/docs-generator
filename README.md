@@ -1,3 +1,5 @@
+A doc generator inspiration by https://github.com/addyosmani/backbone-fundamentals 
+
 ## Installation
 
 * install pandoc  [Link](http://code.google.com/p/pandoc/downloads/list)
